@@ -25,19 +25,12 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
 
     dependencies {
-        implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("org.springframework.boot:spring-boot-starter-websocket")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
-        implementation("org.springframework.kafka:spring-kafka")
 
-        testImplementation("org.springframework.boot:spring-boot-starter-test")
-        testImplementation("org.springframework.boot:spring-boot-testcontainers")
-        testImplementation("org.springframework.kafka:spring-kafka-test")
         testImplementation("org.testcontainers:junit-jupiter")
-        testImplementation("org.testcontainers:kafka")
-        testImplementation("org.testcontainers:mongodb")
     }
 
     tasks.withType<KotlinCompile> {

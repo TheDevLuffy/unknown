@@ -12,3 +12,8 @@ include(
 include(
     ":core",
 )
+
+include(
+    ":infrastructure:mongo",
+    ":infrastructure:kafka",
+)
