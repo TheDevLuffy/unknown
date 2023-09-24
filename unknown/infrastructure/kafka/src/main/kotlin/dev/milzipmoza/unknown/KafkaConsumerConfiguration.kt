@@ -19,6 +19,7 @@ class KafkaConsumerConfiguration {
     fun consumerFactory(): ConsumerFactory<String, String> {
         return DefaultKafkaConsumerFactory(
             mapOf(
+                ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to "localhost:9092",
                 ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
                 ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to JsonDeserializer::class.java,
             )

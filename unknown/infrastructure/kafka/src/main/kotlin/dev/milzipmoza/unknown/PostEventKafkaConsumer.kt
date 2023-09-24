@@ -14,7 +14,7 @@ class PostEventKafkaConsumer {
         topics = [
             PostEventKafkaProducer.TOPIC_NAME,
         ],
-        groupId = "hello"
+        groupId = "unknown"
     )
     fun consume(message: CreatePostEventKafkaMessage) {
         logger.info { "message consumed=$message" }
