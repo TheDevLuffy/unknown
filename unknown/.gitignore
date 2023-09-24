@@ -20,3 +20,6 @@ out/
 
 ### Fleet ###
 .fleet/
+
+### docker
+./docker/volume
