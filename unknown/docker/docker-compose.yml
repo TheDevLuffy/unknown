@@ -73,3 +73,13 @@ services:
     volumes:
       - ./volume/kafka/data:/var/lib/kafka/data
       - ./volume/kafka/logs:/tmp/logs
+  mongodb:
+    image: 'mongo:6.0'
+    container_name: 'mongo'
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./volume/mongo/data:/data
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password

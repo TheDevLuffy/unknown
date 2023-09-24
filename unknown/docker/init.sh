@@ -6,3 +6,4 @@ mkdir ./volume/zookeeper/zoo3
 mkdir ./volume/kafka
 mkdir ./volume/kafka/data
 mkdir ./volume/kafka/logs
+mkdir ./volume/mongo
