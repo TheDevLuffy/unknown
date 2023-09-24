@@ -1,4 +1,6 @@
 dependencies {
+    implementation(project(":core"))
+
     api("org.springframework.kafka:spring-kafka")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")

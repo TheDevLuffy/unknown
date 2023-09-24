@@ -25,6 +25,7 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
 
     dependencies {
+        implementation("io.github.oshai:kotlin-logging-jvm:5.1.0")
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("org.springframework.boot:spring-boot-starter-websocket")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
