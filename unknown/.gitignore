@@ -22,4 +22,4 @@ out/
 .fleet/
 
 ### docker
-./docker/volume
+./docker/volume/**
