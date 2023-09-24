@@ -3,8 +3,8 @@ services:
   zoo1:
     image: 'zookeeper:3.9.0'
     container_name: 'zookeeper_zoo1'
+    hostname: 'zoo1'
     restart: 'always'
-    hostname: zoo1
     ports:
       - '2181:2181'
     environment:
@@ -19,8 +19,8 @@ services:
   zoo2:
     image: 'zookeeper:3.9.0'
     container_name: 'zookeeper_zoo2'
+    hostname: 'zoo2'
     restart: 'always'
-    hostname: zoo2
     ports:
       - '2182:2181'
     environment:
@@ -35,8 +35,8 @@ services:
   zoo3:
     image: 'zookeeper:3.9.0'
     container_name: 'zookeeper_zoo3'
+    hostname: 'zoo3'
     restart: 'always'
-    hostname: zoo3
     ports:
       - '2183:2181'
     environment:
@@ -51,6 +51,7 @@ services:
   kafka:
     image: 'confluentinc/cp-kafka:7.5.0.arm64'
     container_name: 'kafka'
+    hostname: 'kafka'
     restart: 'always'
     depends_on:
       - 'zoo1'
@@ -68,14 +69,30 @@ services:
       LOG_DIRS: '/tmp/logs' # 4. log.dirs
       KAFKA_NUM_RECOVERY_THREADS_PER_DATA_DIR: 1 # 5. num.recovery.threads.per.data.dir
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'false' # 6. auto.create.topics.enable
-      KAFKA_AUTO_LEADER_REBALANCE_ENABLE: 70  # 7. auto.leader.rebalance.enable
+      KAFKA_AUTO_LEADER_REBALANCE_ENABLE: 'false'  # 7. auto.leader.rebalance.enable
       KAFKA_DELETE_TOPIC_ENABLE: 'false' # 8. delete.topic.enable
     volumes:
       - ./volume/kafka/data:/var/lib/kafka/data
       - ./volume/kafka/logs:/tmp/logs
+  kafka-ui:
+    image: provectuslabs/kafka-ui
+    container_name: kafka-ui
+    ports:
+      - '9090:8080'
+    depends_on:
+      - 'zoo1'
+      - 'zoo2'
+      - 'zoo3'
+      - 'kafka'
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:29092
+      - KAFKA_CLUSTERS_0_ZOOKEEPER=zoo1:2181
   mongodb:
     image: 'mongo:6.0'
     container_name: 'mongo'
+    hostname: 'mongo'
+    restart: 'always'
     ports:
       - '27017:27017'
     volumes:
