@@ -1,7 +1,9 @@
 rootProject.name = "unknown"
 
-include(":application")
-include(":application-consumer")
+include(
+    ":application:app",
+    ":application:consumer"
+)
 
 include(
     "integration:service",
